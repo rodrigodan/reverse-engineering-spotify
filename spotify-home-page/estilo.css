@@ -1,0 +1,279 @@
+/*estrutura com autor e versão:*/
+/*
+*
+* @author Rodrigo Gonçalves
+* @version 0.1
+*/
+
+ /*divisão entre duas grandes estruturas:*/
+
+/* ====================== layout ==================*/
+/*indico que tanto o body como o html estão ocupando 100% do espaço, assim como a capa(não entendi):*/
+/*se o html não esiver 100% também, eu vou preencher o meu viwer point baseado no conteúdo:*/
+html, body, .capa{
+	height: 100%;
+	overflow: auto;
+}
+
+body{
+	
+	/*composição de imagens:*/
+
+	/*no linear-gradient, eu posso passar três parâmetros:*/
+	/*posso passar apenas dois parâmetros para que ele crie um degradê de forma linear
+	ou eu posso ainda definir o grau de inclinação que eu quero e as cores*/
+
+	/*coloca-se o no-repeat para não repetir nem a imagem de fundo, nem o ruído em questão*/
+	background: url('imagens/capa.png'), 
+				url('imagens/ruido.png'),
+				linear-gradient(50deg, #ff4169, #7c26f8);
+	/*tirei o no-repeat*/
+	/*eu quero que as imagens se repitam, mas não indefinidamente*/
+	background-attachment: fixed;
+
+	font-family: Helvetica, Arial, sans-serif;
+
+	/*remover a barra de rolagem que nesse caso e o y*/
+	/*overflow-y: hidden;*/
+
+	overflow-x: hidden; 
+
+}
+
+
+
+/* -- Barra de navegação -- */
+
+ /*vou usar para estruturas aos quais usarei para montar o site*/
+ .img-logo{
+ 	height: 40px;
+ 	width: 132px;
+ 	/*svg é o melhor formato para criação de imagens escaláveis. Ou seja, aqueles aos quais melhor se adequa aos dispositivos*/
+
+ 	/*quero transformar o elemento inline em block*/
+ 	display: block;
+ 	background: url('imagens/spotify.svg') no-repeat;
+ 	
+ 	/*define a dimensão de uma imagem de fundo:*/
+ 	/*o contain vai definir que nossa imagem de fundo vai ter o mesmo tamanho que definimos lá no início da formatação da classe
+ 	(onde tem o height e o width)*/
+ 	background-size: contain;  
+ 	/*esconder a visualização do texto e deixar apenas a logo:*/
+ 	color: transparent;
+ }
+
+nav.navbar-transparente{
+	/*um padding de 15px nas verticais e 0 nas horizontais*/
+	padding: 15px 0px ;
+	/**/
+	background: rgba(0,0,0,0.6);
+	border:none;
+}
+/*a classe navbar-brand possui uma formação padrão e por isso a logo fica meio decentralizada, logo é preciso sobescrever o padding
+da mesma:*/
+.navbar-brand{
+	padding: 5px 15px;
+}
+
+.divisor{
+	width: 1px;
+	height: 16px;
+	background: white;
+	margin: 15px 10px;
+}
+
+/*vou formatar as tags dentro das classes navbar-inverse e navbar-nav cujo filho é li e filho do filho é um link nomeado com a tag a*/
+.navbar-inverse .navbar-nav>li>a {
+		color: white;
+	}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+		color: #9bf0e1;
+	}
+
+/* -- Imagem de capa: -- */
+.capa {
+	/*vai ter um comportamento de tabela*/
+
+	display: table;
+	/*como ele possui um conteúdo de tabelas, a região de capa cresce com a demanda, logo devo fazer uso do width para concertar 
+	isso:*/
+	width: 100%; 
+}
+
+.texto-capa {
+	text-align: center;
+	color: white;
+
+	display: table-cell;
+	vertical-align: middle;
+}
+/* -- Botões: -- */
+/*botão ao qual queremos customizar*/
+.btn-custom{
+	color: white;
+	border-radius: 500px;
+	-webkit-border-radius: 500px;
+	-moz-border-radius: 500px;
+	border-color: white;
+
+	/*espaçamento entre botões, mas vamos fazer isso usando Media Querie*/
+	/*padding: 10px 35px;
+	margin: 10px 15px;*/
+	text-transform: uppercase;
+	
+	transition: background 0.4s, color 0.04; 
+}
+
+.btn-roxo{
+	background: #7c25f8;
+
+}
+
+
+.btn-roxo:hover{
+	background: #6207e3;
+	color:white;
+}
+
+.btn-branco{
+	border: 2px solid white;
+}
+
+.btn-branco:hover{
+	background-color: white;
+	color: black;
+}
+
+/* -- secao servico --*/
+#servicos {
+	background: white;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+ 
+.albuns{
+	padding: 10px 0px 10px 0px;
+}
+
+/* -- recursos --*/
+#recursos {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: white;
+}
+
+.rotacionar{
+	transform: rotate(30deg); 
+	/*transformação para navegadores em específico*/
+	-ms-transform: rotate(30deg); 
+	-webkit-transform: rotate(30deg); 
+
+	padding-left: 80px; 
+}
+ 
+/* -- rodape --*/
+
+footer{
+	background:#000;
+	padding: 50px 0px 20px 0px;
+	position: relative; 
+}
+
+
+.nav>li>a {
+	color: white;
+
+}
+
+.nav>li>a:hover {
+	color: #9bf0e1;
+	background: none;
+
+}
+
+.nav>li>a:visited{
+	background: #000;
+}
+
+.iconeImagem>li {
+
+	float: right;
+}
+
+/*====================== Tipografia ====================*/
+/*vou usar para formatação de textos em geral*/
+
+h1{
+	/*tiro esse font-size, pois iremos definir tamanhos diferentes dependendo do dispositivo*/
+/*	font-size: 100px;*/
+	font-weight: 900;
+
+	/*quando estou trabalhando com grandes fontes, como o h1, é interessante que o texto fique colocado, tão quão é possível:*/
+	/*isso será feito por meio do:*/
+	letter-spacing: -0.05em; 
+	margin-bottom: 50px;
+}
+
+/*media Querie*/
+/*xs < 768*/
+/*aqui dentro do media queries, eu faço correções, quando a formatação é mais geral, eu coloco-as fora do Media querie*/
+@media screen and (max-width: 767px) {
+	h1 {
+	    font-size: 50px; 
+  	}
+  	.btn-custom {
+    	margin: 10px 15px;
+	}
+}
+
+/*para dispositiviso um pouco maior:*/
+/*sm*/
+@media screen and (min-width: 768px) {
+    h1 {
+	    font-size: 70px; 
+  	}
+
+}
+
+/*md*/
+@media screen and (min-width: 992px) {
+    h1 {
+	    font-size: 80px; 
+  	}
+}
+/* lg */
+@media screen and (min-width: 1200px) {
+    h1 {
+	    font-size: 100px; 
+  	}
+}
+
+
+h2 {
+	font-size: 50px;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+}
+
+h3 {
+	font-size: 35px;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+
+}
+
+#rodape h4{
+	color: #919496;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+
+#servicos h2, #servicos h3{
+	color: #7c25f8;
+}
+
+#recursos h3{
+	color: #9bf0e1;
+}
